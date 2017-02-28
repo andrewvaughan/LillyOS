@@ -10,7 +10,7 @@ lillyos-$(VERSION).img: dependencies
 	dd conv=notrunc if=bootloader/bootloader.bin of=lillyos-$(VERSION).img
 
 emulation: image
-	qemu-system-i386 -m 1024 -cpu qemu32 -hda lillyos-$(VERSION).img #-drive file=lillyos-$(VERSION).img,format=raw,if=pflash
+	qemu-system-i386 -m 1024 -cpu qemu32 -drive file=lillyos-$(VERSION).img,index=0,media=disk,format=raw
 
 dependencies:
 	+$(MAKE) -C bootloader
