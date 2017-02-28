@@ -9,6 +9,9 @@ lillyos-$(VERSION).img: dependencies
 	dd if=/dev/zero of=lillyos-$(VERSION).img bs=512 count=2880
 	dd conv=notrunc if=bootloader/bootloader.bin of=lillyos-$(VERSION).img
 
+emulation: image
+	qemu-system-i386 -m 1024 -cpu qemu32 -hda lillyos-$(VERSION).img #-drive file=lillyos-$(VERSION).img,format=raw,if=pflash
+
 dependencies:
 	+$(MAKE) -C bootloader
 
@@ -18,4 +21,4 @@ clean:
 	rm -rf lillyos-$(VERSION).iso
 	rm -rf lillyos-$(VERSION).img
 
-.PHONY: iso image dependencies clean
+.PHONY: iso image emulation dependencies clean
