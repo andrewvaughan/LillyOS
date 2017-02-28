@@ -74,3 +74,10 @@ If you prefer to emulate a floppy disk in QEMU, the command can be changed to re
 `qemu -fda lillyos-VERSION.img`
 
 Both of these should work without issue, due to the small size of LillyOS.
+
+Alternatively, a pre-set environment is available within the `Makefile` to support this.  With QEMU installed, simply
+run `make emulation` to create a pre-made environment with the following characteristics:
+
+* 1GB RAM
+* qemu32 CPU
+* Image loaded to hard disk (using more-advanced `-drive` method, not `-hda` method)
