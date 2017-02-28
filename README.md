@@ -58,3 +58,19 @@ This file can also be used on a virtual operating system, if loaded into a virtu
 
 Alternatively, the `iso` option will create both the `.img` and `.iso` files, the latter of which can be run virtually
 or copied to a bootable CD or USB key.
+
+
+## Emulation
+
+Emulation is best done with QEMU.  This can be installed with Linux or Homebrew for MacOS by installing the `qemu`
+package.  *Note* - if using MacOS, you will want to use the `qemu-system-i386` executable in place of `qemu` below.
+
+To run a created image, simply load the created image in QEMU, loading LillyOS into the virtual hard drive:
+
+`qemu -hda lillyos-VERSION.img`
+
+If you prefer to emulate a floppy disk in QEMU, the command can be changed to reflect this:
+
+`qemu -fda lillyos-VERSION.img`
+
+Both of these should work without issue, due to the small size of LillyOS.
